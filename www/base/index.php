@@ -1,5 +1,6 @@
 <?php
-define('MVC','../../mvc/');
-define('INSTALL','../../installs/base/');
 
-include(MVC.'index.php');
+define('MVC', '../../mvc/');
+define('INSTALL', '../../installs/base/');
+
+include(MVC . 'index.php');

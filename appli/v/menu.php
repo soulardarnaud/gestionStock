@@ -1,6 +1,4 @@
-<?php
-
-?>
+<?php ?>
 <html>
     <head>
         <title></title>
@@ -12,33 +10,33 @@
                 <div class="navbar-header">
                     <a class="navbar-brand" href="./index.php">
                         <?php
-                            echo \MVC\A::post('a',\Install\App::NAME);
+                        echo \MVC\A::post('a', 'Gestion des Stocks');
                         ?>
                     </a>
                 </div>
                 <div class="nav navbar-nav side-nav">
                     <ul class="nav navbar-nav side-nav">
                         <li>
-                            <a href="../../appli/v/categorie/liste.php">
-                                <i class="fa fa-bar-chart-o"></i>
-                                Catégorie
-                            </a>
-                        </li>
-                        <li>
-                            <a href="../../appli/v/marque/liste.php">
-                                <i class="fa fa-bar-chart-o"></i>
-                                Marques
-                            </a>
-                        </li>
-                        <li>
                             <a href="../../appli/v/produit/liste.php">
-                                <i class="fa fa-bar-chart-o"></i>
+                                <i class="fa fa-desktop"></i>
                                 Produits
                             </a>
                         </li>
                         <li>
+                            <a href="../../appli/v/marque/liste.php">
+                                <i class="fa fa-bookmark"></i>
+                                Marques
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../../appli/v/categorie/liste.php">
+                                <i class="fa fa-book"></i>
+                                Catégorie
+                            </a>
+                        </li>
+                        <li>
                             <a href="../../appli/v/mouvement/liste.php">
-                                <i class="fa fa-bar-chart-o"></i>
+                                <i class="fa fa-truck Mouvement"></i>
                                 Mouvements
                             </a>
                         </li>
