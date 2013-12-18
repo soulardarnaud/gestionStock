@@ -1,3 +1,20 @@
+<!-- Bootstrap core JavaScript -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="<?php echo Install\Chemins::JS; ?>bootstrap.js"></script>
+<!-- Page Specific Plugins -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+<script src="http://cdn.oesmith.co.uk/morris-0.4.3.min.js"></script>
+<script src="<?php echo Install\Chemins::JS; ?>tablesorter/jquery.tablesorter.js"></script>
+<script src="<?php echo Install\Chemins::JS; ?>tablesorter/tables.js"></script>
+<script src="<?php echo Install\Chemins::JS; ?>localStorageHelper.js"></script>
+<script src="<?php echo Install\Chemins::JS; ?>list.js"></script>
+<script src="<?php echo Install\Chemins::JS; ?>list.pagination.js"></script>
+<script src="<?php echo Install\Chemins::JS; ?>list.fuzzysearch.js"></script>
+<script src="<?php echo Install\Chemins::JS; ?>perso.js"></script>
+<script>
+    $(document).ready(function() {
+    });
+</script>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -6,7 +23,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title><?php echo Install\App::NAME; ?></title>
+        <title>Gestion des Stocks</title>
 
         <!-- Bootstrap core CSS -->
         <link href="<?php echo Install\Chemins::CSS; ?>bootstrap.css" rel="stylesheet">
@@ -31,17 +48,17 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#" onclick="ajax($('#page-content'), {c: 'Utilisateur', a: 'tableaudebord_content'}, true, true)">Gestion des Stocks</a>
+                    <a class="navbar-brand" href="?c=produit&a=liste">Gestion des Stocks</a>
                 </div>
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
 
                     <ul id="menu" class="nav navbar-nav side-nav">
-                        <li id="nav_produit"><a href="#" onclick="ajax($('#page-content'), {c: 'Produit', a: 'liste'}, true, true)"><i class="fa fa-desktop"></i> Produits</a></li>
-                        <li id="nav_marque"><a href="#" onclick="ajax($('#page-content'), {c: 'Marque', a: 'liste'}, true, true);"><i class="fa fa-flag-checkered"></i> Marques</a></li>
-                        <li id="nav_categorie"><a href="#" onclick="ajax($('#page-content'), {c: 'Type', a: 'liste'}, true, true)"><i class="fa fa-book"></i> Catégorie</a></li>
-                        <li id="nav_mouvement"><a href="#" onclick="ajax($('#page-content'), {c: 'Mouvement', a: 'liste'}, true, true)"><i class="fa fa-truck Mouvement"></i> Mouvement</a></li>
-                        <!-- <li><a href="#" onclick="ajax($('#page-content'),{c:'Produit',a:'statistique'}, true, true)"><i class="fa fa-bar-chart-o"></i> Statistique</a></li> -->
+                        <li id="nav_produit"><a href="?c=produit&a=liste"><i class="fa fa-desktop"></i> Produits</a></li>
+                        <li id="nav_marque"><a href="?c=marque&a=liste"><i class="fa fa-bookmark"></i> Marques</a></li>
+                        <li id="nav_categorie"><a href="?c=categorie&a=liste"><i class="fa fa-book"></i> Catégories</a></li>
+                        <li id="nav_mouvement"><a href="?c=mouvement&a=liste"><i class="fa fa-truck Mouvement"></i> Mouvement</a></li>
+
                     </ul>
 
 
@@ -52,94 +69,67 @@
                 <div id="page-content"></div>
                 <div class ="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Marques <small><span class="label label-danger"><?php echo $this->marque_count; ?></span></small></h1>
-                        <ul class="breadcrumb">
-                            <li><a href="#" onclik="ajax($('#page-content'),{c:'Utilisateur',a:'tableaudebord_content'}, true, true)">Tableau de bord</a></li>
-                            <li class="active">Marques</li>
-                        </ul>
+                        <!-- Bandeau -->
+                        <ol class="breadcrumb">
+                            <li><a href="?c=produit&a=liste">Gestion des Stocks</a></li>
+                            <li class="active">Liste des marques</li>
+                        </ol>
+                        <!-- -->
+                        <h1 class="page-header">Liste des marques</h1>
                     </div>
                 </div>
+
+
 
                 <!-- Contenue -->
-                <div id="marque">
-                    <!-- Pagination -->
-                    <div class="row text-center">
-                        <div class="col-lg-12">
-                            <ul class="pagination paginationTop"></ul>
-                        </div>
-                    </div>
-                    <!-- Search -->
-                    <div class="row text-center">
-                        <div class="col-lg-5"></div>
-                        <div class="col-lg-2">
-                            <div class="form-group input-group">
-                                <span class="input-group-addon">Nom : </i></span>
-                                <input type="text" class="fuzzy-search form-control"/>
-                            </div>
-                        </div>
-                        <div class="col-lg-5"></div>
-                    </div>
-                    <!-- Content -->
-                    <div class="row text-center">
-                        <div class="col-lg-12">
-                            <div class="list">
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Search -->
-                    <div class="row text-center">
-                        <div class="col-lg-5"></div>
-                        <div class="col-lg-2">
-                            <div class="form-group input-group">
-                                <span class="input-group-addon">Nom : </i></span>
-                                <input type="text" class="fuzzy-search form-control"/>
-                            </div>
-                        </div>
-                        <div class="col-lg-5"></div>
-                    </div>
-                    <!-- Pagination -->
-                    <div class="row text-center">
-                        <div class="col-lg-12">
-                            <ul class="pagination paginationBottom"></ul>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover table-striped tablesorter">
+                                <thead>
+                                    <tr>
+                                        <th class="header">Identifiant <i class="fa fa-sort"></i></th>
+                                        <th class="header">Libelle <i class="fa fa-sort"></i></th>
+                                    </tr>
+                                    </thread>
+                                <tbody id="table_rows">
+                                    <!-- <tr>
+                                        <td>1</td>
+                                        <td>0</td>
+                                        <td>1</td>
+                                        <td>0</td>
+                                        <td>1</td>
+                                    </tr> -->
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
 
-                <script>
-                    var marques = <?php echo json_encode($this->marques); ?>;
-
-                    var paginationTopOptions = {
-                        name: "paginationTop",
-                        paginationClass: "paginationTop",
-                        outerWindow: 2
-                    };
-
-                    var paginationBottomOptions = {
-                        name: "paginationBottom",
-                        paginationClass: "paginationBottom",
-                        innerWindow: 3,
-                        left: 2,
-                        right: 4
-                    };
-
-                    var onclick = "ajax($(\'#page-content\'),{c:\'Marque\',a:\'item\', id:$(this).children(\'span\').filter(\'.id\').text()}, true, true)";
-
-                    var options = {
-                        valueNames: ['id', 'libelle'],
-                        item: '<div class="col-lg-3">\n\
-                            <div class="list-group">\n\
-                                <a class="list-group-item" href="#" onclick="' + onclick + '"><span class="id badge"></span> <span class="libelle"></span></a>\n\
-                            </div>\n\
-                        </div>',
-                        plugins: [
-                            ListPagination({paginationClass: "paginationTop", outerWindow: 2}),
-                            ListPagination({paginationClass: "paginationBottom", outerWindow: 2}),
-                            ListFuzzySearch()
-                        ]
-                    };
-
-
-                    var marqueList = new List('marque', options, marques);
-                </script>
-
+                <!-- Pagination -->
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <!--   <ul class="pagination pagination-sm">
+                               <li><a href="#">«</a></li>
+                               <li><a href="#">1</a></li>
+                               <li><a href="#">2</a></li>
+                               <li><a href="#">3</a></li>
+                               <li><a href="#">4</a></li>
+                               <li><a href="#">5</a></li>
+                               <li><a href="#">»</a></li>
+                           </ul> -->
+                    </div>
+                </div>
             </div>
+        </div>
+        <script type="text/javascript">
+
+            var liste = <?php echo json_encode($this->liste) ?>;
+            for (var i = 0; i < liste.length; i++)
+            {
+                $('#table_rows').append('<tr><td>' + liste[i].id + '</td><td>' + liste[i].libelle);
+            }
+
+        </script>
+
+

@@ -31,17 +31,17 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#" onclick="ajax($('#page-content'), {c: 'Utilisateur', a: 'tableaudebord_content'}, true, true)">Gestion des Stocks</a>
+                    <a class="navbar-brand" href="?c=produit&a=liste">Gestion des Stocks</a>
                 </div>
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
 
                     <ul id="menu" class="nav navbar-nav side-nav">
-                        <li id="nav_produit"><a href="#" onclick="ajax($('#page-content'), {c: 'Produit', a: 'liste'}, true, true)"><i class="fa fa-desktop"></i> Produits</a></li>
-                        <li id="nav_marque"><a href="#" onclick="ajax($('#page-content'), {c: 'Marque', a: 'liste'}, true, true);"><i class="fa fa-flag-checkered"></i> Marques</a></li>
-                        <li id="nav_categorie"><a href="#" onclick="ajax($('#page-content'), {c: 'Categorie', a: 'liste'}, true, true)"><i class="fa fa-book"></i> Catégorie</a></li>
-                        <li id="nav_mouvement"><a href="#" onclick="ajax($('#page-content'), {c: 'Mouvement', a: 'liste'}, true, true)"><i class="fa fa-truck Mouvement"></i> Mouvement</a></li>
-                        <!-- <li><a href="#" onclick="ajax($('#page-content'),{c:'Produit',a:'statistique'}, true, true)"><i class="fa fa-bar-chart-o"></i> Statistique</a></li> -->
+                        <li id="nav_produit"><a href="?c=produit&a=liste"><i class="fa fa-desktop"></i> Produits</a></li>
+                        <li id="nav_marque"><a href="?c=marque&a=liste"><i class="fa fa-bookmark"></i> Marques</a></li>
+                        <li id="nav_categorie"><a href="?c=categorie&a=liste""><i class="fa fa-book"></i> Catégories</a></li>
+                        <li id="nav_mouvement"><a href="?c=mouvement&a=liste"><i class="fa fa-truck Mouvement"></i> Mouvement</a></li>
+
                     </ul>
 
 
@@ -51,15 +51,16 @@
                 <div id="page-localstorage"></div>
                 <div id="page-content"></div>
                 <div class ="row">
-                    <div class="col-lg-12">
-                        <h1 class="page-header">Mouvements <small><span class="label label-danger"><?php echo $this->mouvement_count; ?></span></small></h1>
-                    </div>
                     <!-- Bandeau -->
                     <ol class="breadcrumb">
-                        <li><a href="#" onclick="ajax($('#page-content'), {c: 'Utilisateur', a: 'tableaudebord_content'}, true, true)">Gestion des Stocks</a></li>
+                        <li><a href="?c=produit&a=liste">Gestion des Stocks</a></li>
                         <li class="active">Mouvements</li>
                     </ol>
                     <!-- -->
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Mouvements </h1>
+                    </div>
+
                 </div>
 
                 <!-- Recherche -->
@@ -90,14 +91,7 @@
                 <!-- Contenue -->
                 <div class="row">
                     <div class="col-lg-12">
-                        <!-- LOADER -->
-                        <div id="loader">
-                            <h1>Chargement ...</h1>
-                            <div class="progress progress-striped active">
-                                <div class="progress-bar progress-bar-success" style="width: 100%"></div>
-                            </div>
-                        </div>
-                        <!-- FIN LOADER -->
+                        
                         <div class="table table-responsive" id="data" hidden>
                             <table class="table table-bordered table-hover table-striped tablesorter">
                                 <thead>

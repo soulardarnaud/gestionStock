@@ -9,4 +9,5 @@ class Chemins {
     const CSS='../_/css/';
     const JS='../_/js/';
     const FONT='../_/font-awesome/';
+
 }
